@@ -1,19 +1,11 @@
 (function() {
   const choiceMap = {
     1: {
-      texts: ["Pick Lago's call", "Do not pick Lago's call"],
+      texts: ["Forgive Omar", "Break-up with Omar"],
       paths: [2, 3]
     },
-    2: {
-      texts: ["Take Lago's advice", "Do not take Lago's advice"],
-      paths: [4, 5]
-    },
-    3: {
-      texts: ["Meet Deside's dad", "Don't meet Deside's dad"],
-      paths: [5, 4]
-    }
   };
-  const finalStates = [4, 5];
+  const finalStates = [2, 3];
 
   $('document').ready(function() {
     const query = window.location.href.split('?');
