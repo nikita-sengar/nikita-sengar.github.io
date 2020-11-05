@@ -1,19 +1,19 @@
 (function() {
   const choiceMap = {
     1: {
-      texts: ["Pick Lago's call"],
-      paths: [2]
+      texts: ["Pick Lago's call", "Do not pick Lago's call"],
+      paths: [2, 3]
     },
     2: {
-      texts: ["Take Lago's advice"],
-      paths: [3]
+      texts: ["Take Lago's advice", "Do not take Lago's advice"],
+      paths: [4, 5]
     },
     3: {
-      texts: ["Meet Deside's dad"],
-      paths: [4]
+      texts: ["Meet Deside's dad", "Don't meet Deside's dad"],
+      paths: [5, 4]
     }
   };
-  const finalStates = [4];
+  const finalStates = [4, 5];
 
   $('document').ready(function() {
     const query = window.location.href.split('?');
@@ -55,16 +55,19 @@
 
     if (params['src']) {
       const leftBtn = $('#leftChoice');
+      const rightBtn = $('#rightChoice');
 
       const partStr = params['src'].split('.')[0];
       const curPartNum = parseInt(partStr[partStr.length - 1]);
       if (finalStates.indexOf(curPartNum) === -1) {
         const { paths, texts } = choiceMap[curPartNum];
-        const [nextPart] = paths;
-        const [text] = texts;
+        const [leftPartNum, rightPartNum] = paths;
+        const [leftPartText, rightPartText] = texts;
 
-        leftBtn.data('link', `part${nextPart}.mp4`);
-        leftBtn.text(text);
+        leftBtn.data('link', `part${leftPartNum}.mp4`);
+        rightBtn.data('link', `part${rightPartNum}.mp4`);
+        leftBtn.text(leftPartText);
+        rightBtn.text(rightPartText);
       }
     }
   });
