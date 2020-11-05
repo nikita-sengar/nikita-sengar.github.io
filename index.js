@@ -23,8 +23,8 @@
 
     choices.hide();
 
-    const imgLink = params['src'] ? params['src'].split('.')[0] : "part1";
-    image[0].src = `media/${imgLink}.png`;
+    const imgLink = params['src'] ? params['src'] : "part1";
+    image[0].src = `media/part${imgLink}.png`;
     image.hide();
 
     if (params['src']) {
@@ -37,9 +37,8 @@
     }
 
     video[0].onended = function() {
-      const partStr = (params['src'] || 'part1.mp4').split('.')[0];
-      const curPartNum = parseInt(partStr[partStr.length - 1]);
-      if (finalStates.indexOf(curPartNum) === -1) {
+      const partStr = parseInt(params['src'] || '1');
+      if (finalStates.indexOf(partStr) === -1) {
         video.hide();
         image.show();
         choices.show();
@@ -50,10 +49,9 @@
       const leftBtn = $('#leftChoice');
       const rightBtn = $('#rightChoice');
 
-      const partStr = params['src'].split('.')[0];
-      const curPartNum = parseInt(partStr[partStr.length - 1]);
-      if (finalStates.indexOf(curPartNum) === -1) {
-        const { paths, texts } = choiceMap[curPartNum];
+      const partStr = parseInt(params['src']);
+      if (finalStates.indexOf(partStr) === -1) {
+        const { paths, texts } = choiceMap[partStr];
         const [leftPartNum, rightPartNum] = paths;
         const [leftPartText, rightPartText] = texts;
 
