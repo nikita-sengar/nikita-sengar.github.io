@@ -5,6 +5,7 @@
       paths: [2, 3]
     },
   };
+  const links = ["", "https://drive.google.com/uc?export=download&id=1drjRP52Bo3a3-_PZmiuO2DWdieh7A6wd", "https://drive.google.com/uc?export=download&id=11Ma_EosEqWh8XXTsYsqWgMyqHlLnXcPI"];
   const finalStates = [2, 3];
 
   $('document').ready(function() {
@@ -27,11 +28,11 @@
     image.hide();
 
     if (params['src']) {
-      source.setAttribute('src', `media/${params['src']}`);
+      source.setAttribute('src', links[parseInt(params['src']) - 1]);
       video.append(source);
       video[0].play(); // --autoplay-policy=no-user-gesture-required
     } else {
-      source.setAttribute('src', `https://drive.google.com/uc?export=download&id=1HxMLFXdcsTf_Abq8wWPyl91IwCNfHk7F`);
+      source.setAttribute('src', `https://www.googleapis.com/drive/v3/files/1HxMLFXdcsTf_Abq8wWPyl91IwCNfHk7F?alt=media&key=AIzaSyCQRVxJR2SseWka4lh4XVXl9zoVJMxiGos`);
       video.append(source);
     }
 
@@ -56,8 +57,8 @@
         const [leftPartNum, rightPartNum] = paths;
         const [leftPartText, rightPartText] = texts;
 
-        leftBtn.data('link', `part${leftPartNum}.mp4`);
-        rightBtn.data('link', `part${rightPartNum}.mp4`);
+        leftBtn.data('link', leftPartNum);
+        rightBtn.data('link', rightPartNum);
         leftBtn.text(leftPartText);
         rightBtn.text(rightPartText);
       }
