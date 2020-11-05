@@ -23,7 +23,7 @@
 
     choices.hide();
 
-    const imgLink = params['src'] ? params['src'] : "part1";
+    const imgLink = params['src'] ? params['src'] : "1";
     image[0].src = `media/part${imgLink}.png`;
     image.hide();
 
