@@ -31,7 +31,7 @@
       video.append(source);
       video[0].play(); // --autoplay-policy=no-user-gesture-required
     } else {
-      source.setAttribute('src', `media/part1.mp4`);
+      source.setAttribute('src', `https://drive.google.com/file/d/1HxMLFXdcsTf_Abq8wWPyl91IwCNfHk7F/view`);
       video.append(source);
     }
 
